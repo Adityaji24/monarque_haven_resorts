@@ -1,0 +1,426 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hamburger Icon */
+#hamburger {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 10001;
+    font-size: 34px;
+    background: #fff3e6;
+    padding: 12px;
+    border-radius: 50%;
+    color: #5c4033;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#hamburger:hover {
+    transform: scale(1.1);
+}
+
+/* Full Menu */
+#full {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: blanchedalmond;
+    color: brown;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.6s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    backdrop-filter: blur(10px);
+}
+
+#full.show {
+    right: 0;
+}
+
+#full h2 {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 3rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+#full h2:hover {
+    transform: scale(1.2);
+}
+
+#amg {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    align-items: center;
+}
+
+#amg h3, #amg a h3 {
+    font-size: 2.5rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-weight: lighter;
+}
+
+#amg h3:hover {
+    color: #f4c613;
+}
+
+#iconsss {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+#iconsss i {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#iconsss i:hover {
+    transform: scale(1.3);
+    color: #f4c613;
+}
+
+#amg button {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background-color: #f4c613;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color: brown;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#amg button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navigation Styles */
+.nav {
+    display: flex;
+    gap: 3vh;
+}
+
+.i2 {
+    position: absolute;
+    top: 0%;
+}
+
+.page2 {
+    overflow: hidden;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 5vh;
+}
+
+/* Carousel Styles */
+.crosel {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.crosel .list {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1200px; /* 3D effect */
+    overflow: hidden;
+}
+
+.crosel .list .item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    object-fit: cover;
+    top: 20;
+    z-index: 1;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.crosel .list .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Glassmorphism Content */
+.crosel .list .item .content.glass {
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    transform: translateY(-50%);
+    height: fit-content;
+    padding: 30px;
+    background: rgba(199, 192, 192, 0);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    z-index: 2;
+}
+
+.crosel .list .item .content .author {
+    font-weight: bold;
+    letter-spacing: 10px;
+}
+
+.crosel .list .item .content .title,
+.crosel .list .item .content .topic {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.crosel .list .item .content .topic {
+    color: orange;
+}
+
+.crosel .list .item .content .des {
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.crosel .list .item .content .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.crosel .list .item .content .buttons button {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: sans-serif;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+.crosel .list .item .content .buttons button:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.crosel .list .item .content .buttons button:nth-child(2) {
+    background-color: transparent;
+    color: #eee;
+    border: 1px solid white;
+}
+
+/* Thumbnails */
+.thumbnail {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+
+.thumbnail .item {
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
+}
+
+.thumbnail .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.thumbnail .item.active {
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px #fff;
+    transform: scale(1.1);
+}
+
+/* Arrows */
+.arrows {
+    position: absolute;
+    top: 80%;
+    right: 70%;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 100;
+}
+
+.arrows button {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.arrows button:hover {
+    background-color: white;
+    color: #555;
+}
+
+/* Animations for First Item */
+.crosel .list .item:nth-child(1) {
+    z-index: 1;
+}
+
+.crosel .list .item:nth-child(1) .content .author,
+.crosel .list .item:nth-child(1) .content .title,
+.crosel .list .item:nth-child(1) .content .topic,
+.crosel .list .item:nth-child(1) .content,
+.crosel .list .item:nth-child(1) .content .buttons {
+    transform: translateY(50px);
+    filter: blur(20px);
+    animation: showContent 0.5s linear 1 forwards;
+    opacity: 0;
+}
+
+@keyframes showContent {
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    #hamburger {
+        font-size: 28px;
+        top: 20px;
+        left: 20px;
+        padding: 10px;
+    }
+
+    #full h2 {
+        font-size: 2.5rem;
+    }
+
+    #amg h3 {
+        font-size: 2rem;
+    }
+
+    #amg button {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+    }
+
+    .thumbnail {
+        flex-direction: column;
+        bottom: 30px;
+    }
+
+    .thumbnail .item {
+        width: 120px;
+        height: 180px;
+    }
+
+    .crosel .list .item .content.glass {
+        left: 10%;
+        top: 30%;
+        padding: 20px;
+    }
+
+    .arrows {
+        top: 85%;
+        right: 10%;
+    }
+}
+
+/* Smaller Devices (<= 600px) */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 1vh;
+        align-items: center;
+    }
+
+    .thumbnail {
+        flex-direction: column;
+        bottom: 40px;
+        left: 10%;
+        transform: translateX(0);
+    }
+
+    .crosel .list .item .content {
+        padding: 15px;
+    }
+
+    .arrows {
+        top: 90%;
+        right: 10%;
+    }
+
+    .thumbnail .item {
+        width: 100px;
+        height: 150px;
+    }
+
+    .crosel .list .item .content .buttons {
+        grid-template-columns: repeat(1, 130px);
+    }
+}
