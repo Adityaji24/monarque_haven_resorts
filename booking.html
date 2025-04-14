@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bookings Monarque Haven</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@500&display=swap" rel="stylesheet" />
+  <!-- Remix icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("BGpSz-S5cCA6vHMqh"); // Replace with your EmailJS public key
+    })();
+  </script>
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #f5efe6, #e0c9a6);
+      font-family: 'Cormorant Garamond', serif;
+      color: #4a3c30;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Hamburger icon */
+#hamburger {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 10001;
+    font-size: 34px;
+    background: #fff3e6;
+    padding: 12px;
+    border-radius: 50%;
+    color: #5c4033;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  #hamburger:hover {
+    transform: scale(1.1);
+  }
+  #full {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: blanchedalmond;
+    color:brown;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.6s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    backdrop-filter: blur(10px);
+  }
+  
+  #full.show {
+    right: 0;
+  }
+  
+  #full h2 {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s ease;
+  }
+  #full h2:hover {
+    transform: scale(1.2);
+  }
+  
+  #amg {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  
+  #amg h3, #amg a h3 {
+    font-size: 3rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-weight: lighter;
+  }
+  #amg h3:hover {
+    color: #f4c613;
+  }
+  
+  #iconsss {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  
+  #iconsss i {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  #iconsss i:hover {
+    transform: scale(1.3);
+    color: #f4c613;
+  }
+  
+  #amg button {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background-color: #f4c613;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color:brown;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #amg button:hover {
+    background-color: #fff;
+    color: #000;
+  }
+  a{
+      text-decoration: none;
+      color:inherit;
+  }
+
+
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.7);
+    }
+
+    .landing-container {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .site-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 8px;
+      font-family: 'Playfair Display', serif;
+      color: #fff3e6;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+      animation: fadeInTitle 2s ease-out;
+    }
+
+    @keyframes fadeInTitle {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reservation-section {
+      position: relative;
+      z-index: 2;
+      margin: 100px auto;
+      max-width: 600px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      animation: slideUp 1.2s ease-out;
+    }
+
+    @keyframes slideUp {
+      0% { opacity: 0; transform: translateY(50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .reservation-section h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #8B4513;
+    }
+
+    .reservation-form input,
+    .reservation-form select,
+    .reservation-form button {
+      padding: 12px 16px;
+      margin: 12px auto;
+      font-size: 1.1rem;
+      border: 2px solid #8B4513;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 420px;
+      box-sizing: border-box;
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .reservation-form input:focus,
+    .reservation-form select:focus {
+      outline: none;
+      border-color: #c49a6c;
+      box-shadow: 0 0 8px #c49a6c88;
+    }
+
+    .reservation-form button {
+      background-color: #c49a6c;
+      color: white;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .reservation-form button:hover {
+      background-color: #8B4513;
+      transform: scale(1.05);
+    }
+
+    #popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 128, 0, 0.95);
+      color: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 1.2rem;
+      display: none;
+      z-index: 999;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      line-height: 1.8;
+    }
+
+    #popup span {
+      font-weight: bold;
+      color: #ffd;
+      display: block;
+    }
+    /* Responsive Design */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 2.5rem;
+  }
+
+  #hamburger {
+    top: 15px;
+    left: 15px;
+    font-size: 28px;
+  }
+
+  .reservation-section {
+    margin: 40px auto;
+    padding: 30px;
+  }
+
+  .reservation-form input,
+  .reservation-form select,
+  .reservation-form button {
+    font-size: 1rem;
+  }
+
+  .landing-container {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 2rem;
+  }
+
+  .reservation-section h2 {
+    font-size: 2rem;
+  }
+
+  .reservation-form input,
+  .reservation-form select,
+  .reservation-form button {
+    font-size: 0.9rem;
+  }
+  
+  #popup {
+    font-size: 1rem;
+    padding: 20px;
+  }
+
+  .landing-container {
+    height: 60vh;
+  }
+}
+  </style>
+</head>
+<body>
+  <div id="hamburger">
+    <i class="ri-menu-line"></i>
+  </div>
+  <div id="full">
+    <h2><i class="ri-close-fill"></i></h2>
+    <div id="amg">
+      <a href="#"><h3>Home</h3></a>
+      <a href="about.html"><h3>About</h3></a>
+      <a href="menu.html"><h3>Menu</h3></a>
+      <h3>VR Tour</h3>
+      <div id="iconsss">
+        <i class="ri-instagram-line"></i>
+        <i class="ri-facebook-circle-line"></i>
+        <a href="https://youtu.be/72l_V4ObYaM?si=OnyuH-Pdi7Fo1TDqhttps://youtu.be/72l_V4ObYaM?si=OnyuH-Pdi7Fo1TDq"><i class="ri-youtube-fill"></i></a>
+
+        <i class="ri-linkedin-box-line"></i>
+        
+      </div>
+
+      <p style="font-size: 1.5rem; font-weight: bold; color: #8B0000; letter-spacing: 1px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+        🌊 Yacht Island, <span style="color: #006994;">Abu Dhabi</span>
+      </p>
+      <p style="font-size: 1.5rem; font-weight: bold; color: #8B0000; letter-spacing: 1px; margin: 10px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
+        🏝️ Antigua And Barbuda <span style="color: #228B22;">Caribbean Islands</span>
+      </p>
+     
+      <a href="booking.html"><button>Make A Reservation</button></a>
+      <a href="menu.html"><button>Order Online</button></a>
+    </div>
+  </div>
+
+
+  <div class="landing-container">
+    <video autoplay muted loop class="bg-video">
+      <source src="cafe_intro.mp4" type="video/mp4" />
+    </video>
+    <h1 class="site-title" style="color: #8B4513;margin-top: -150px;">Monarque Haven Resorts</h1>
+  </div>
+
+  <div class="reservation-section" id="reservation" style="margin-top: -380px;">
+    <h2>Reserve a Table</h2>
+    <form class="reservation-form" id="reservation-form">
+      <input type="text" id="name" name="user_name" placeholder="Name" required />
+      <input type="email" id="email" name="user_email" placeholder="Email" required />
+      <input type="date" id="date" name="reservation_date" required />
+      <input type="time" id="time" name="reservation_time" required />
+
+      <select id="place" name="resort_place" required>
+        <option value="" disabled selected>Select Place in Resort</option>
+        <option value="Cafe">Cafe</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Bar">Bar</option>
+        <option value="Pool">Pool</option>
+      </select>
+
+      <input
+        type="number"
+        id="persons"
+        name="number_of_persons"
+        placeholder="Enter Number of Persons"
+        min="1"
+        max="100"
+        required
+      />
+
+      <button type="submit">Book Now</button>
+    </form>
+  </div>
+
+  <div id="popup"></div>
+
+  <script>
+    document.getElementById("reservation-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let date = document.getElementById("date").value;
+      let time = document.getElementById("time").value;
+      let place = document.getElementById("place").value;
+      let persons = document.getElementById("persons").value;
+
+      if (name && email && date && time && place && persons) {
+        let popup = document.getElementById("popup");
+        popup.innerHTML = `
+          <span>Booking Confirmed!</span>
+          <span>Name: ${name}</span>
+          <span>Date: ${date}</span>
+          <span>Time: ${time}</span>
+          <span>Place: ${place}</span>
+          <span>No. of Persons: ${persons}</span>
+        `;
+        popup.style.display = "block";
+
+        gsap.fromTo(popup, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5 });
+
+        setTimeout(() => {
+          gsap.to(popup, {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.5,
+            onComplete: () => popup.style.display = "none"
+          });
+        }, 5000);
+
+        
+
+        document.getElementById("reservation-form").reset();
+      } else {
+        alert("Please fill in all fields.");
+      }
+    });
+     // 2. Hamburger Side Menu Toggle
+    // -------------------------------
+  
+    const hamburger = document.getElementById("hamburger");
+    const fullMenu = document.getElementById("full");
+    const closeIcon = document.querySelector("#full h2 i");
+  
+    // Open side menu
+    hamburger.addEventListener("click", () => {
+      fullMenu.style.right = "0";
+  
+      // Animate menu items
+      gsap.to("#amg h3", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+  
+      gsap.to("#iconsss i", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.5,
+        delay: 0.3,
+        ease: "power2.out"
+      });
+  
+      gsap.to("#amg button", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.1,
+        duration: 0.5,
+        delay: 0.5,
+        ease: "power2.out"
+      });
+    });
+  
+    // Close side menu
+    closeIcon.addEventListener("click", () => {
+      fullMenu.style.right = "-100%";
+  
+      // Reset animations (fade out instantly)
+      gsap.set("#amg h3, #iconsss i, #amg button", {
+        opacity: 0,
+        y: 20
+      });
+    });
+
+  </script>
+
+</body>
+</html>
