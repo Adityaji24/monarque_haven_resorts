@@ -1,0 +1,456 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gilroy', sans-serif;
+    background-color: #f5e1c3; /* soft creamy beige */
+}
+
+#hamburger {
+    position: fixed;
+    top: 10px;
+    left: 100px;
+    z-index: 10001;
+    font-size: 34px;
+    background: #fff3e6;
+    padding: 12px;
+    border-radius: 50%;
+    color: #5c4033;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+#hamburger:hover {
+    transform: scale(1.1);
+}
+
+#full {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: blanchedalmond;
+    color: brown;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.6s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    backdrop-filter: blur(10px);
+}
+
+#full.show {
+    right: 0;
+}
+
+#full h2 {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+#full h2:hover {
+    transform: scale(1.2);
+}
+
+#amg {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+#amg h3, #amg a h3 {
+    font-size: 3rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-weight: lighter;
+}
+
+#amg h3:hover {
+    color: #f4c613;
+}
+
+#iconsss {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+#iconsss i {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#iconsss i:hover {
+    transform: scale(1.3);
+    color: #f4c613;
+}
+
+#amg button {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background-color: #f4c613;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    color: brown;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#amg button:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Cart Styles */
+#cart-icon-container {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+#cart-icon {
+    width: 40px;
+    height: 40px;
+}
+
+#cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #f3e5d0; /* warm cream */
+    overflow-x: hidden;
+    color: #4a3b2b; /* soft dark brown */
+}
+
+/* Page container */
+#page3 {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* SVG rubber line */
+svg {
+    width: 90%;
+    height: 100px;
+    overflow: visible;
+    margin-left: 90px;
+}
+
+.rubber-line {
+    stroke: #2c2927; /* refined tan */
+    stroke-width: 1.5;
+    fill: none;
+}
+
+/* Heading line with hover effect */
+#rubb {
+    background-color: transparent;
+    height: 18%;
+    width: 90%;
+    margin-left: 100px;
+    display: flex;
+    justify-content: space-between;
+    color: #4a3b2b;
+    z-index: 100;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#rubb h1 {
+    font-size: 50px;
+    font-weight: 100;
+    margin-left: 60px;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+#rubb h1:last-child {
+    margin-right: 40px;
+}
+
+#rubb:hover h1 {
+    color: #9e6c4e; /* earthy muted brown */
+    transform: translateX(30px);
+}
+
+#rubb:hover h1:last-child {
+    transform: translateX(-30px);
+    color: #4a3b2b;
+}
+
+/* Slide panel */
+#slide-page {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100vh;
+    background-color: #f1e1cc; /* soft warm beige */
+    color: #4a3b2b;
+    padding: 20px;
+    z-index: 200;
+    transition: right 0.5s ease;
+    overflow-y: auto;
+}
+
+#slide-page.active {
+    right: 0;
+}
+
+#slide-image {
+    width: 690PX;
+    height: 580PX;
+    margin-bottom: 20px;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+}
+
+/* Close button */
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6c5744;
+}
+
+/* Menu items */
+#menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #d8c4b0;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #4a3b2b;
+}
+
+#menu-items li:last-child {
+    border-bottom: none;
+}
+
+#menu-items li .price {
+    color: #9e6c4e;
+    margin-right: 50px;
+}
+
+/* Brand box */
+#brand-box {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #3c2f2f;
+    color: #fff;
+    padding: 12px 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    letter-spacing: 1px;
+    font-weight: lighter;
+}
+
+/* Navigation buttons */
+#nav-buttons {
+    width: 100%;
+    padding: 20px;
+    background-color: #f8efe3; /* lighter cream */
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.nav-btn {
+    padding: 15px 40px;
+    background-color: #e5d0b8; /* soft tan */
+    color: #4a3b2b;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Trebuchet MS', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #d3bea8;
+}
+
+.nav-btn.active {
+    background-color: #9e6c4e; /* warm brown */
+    color: #fffaf4;
+}
+
+/* Quantity Controls */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    background-color: #e5d0b8;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    color: #4a3b2b;
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #d3bea8;
+}
+
+.quantity {
+    width: 30px;
+    text-align: center;
+    color: #4a3b2b;
+}
+
+.add-to-cart {
+    padding: 8px 15px;
+    background-color: #9e6c4e;
+    color: #fffaf4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #8c5e3f;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #hamburger {
+        top: 10px;
+        left: 20px;
+        font-size: 30px;
+    }
+
+    #full h2 {
+        font-size: 3rem;
+    }
+
+    #amg h3, #amg a h3 {
+        font-size: 2.5rem;
+    }
+
+    #iconsss i {
+        font-size: 2rem;
+    }
+
+    #page3 {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    #rubb h1 {
+        font-size: 40px;
+    }
+
+    #slide-page {
+        width: 70%;
+    }
+
+    #slide-image {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hamburger {
+        font-size: 28px;
+        padding: 10px;
+    }
+
+    #full {
+        padding: 20px;
+    }
+
+    #full h2 {
+        font-size: 2.5rem;
+    }
+
+    #amg h3, #amg a h3 {
+        font-size: 2rem;
+    }
+
+    #iconsss i {
+        font-size: 1.8rem;
+    }
+
+    #page3 {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    #rubb h1 {
+        font-size: 30px;
+    }
+
+    #slide-page {
+        width: 80%;
+    }
+
+    #slide-image {
+        width: 100%;
+        height: 250px;
+    }
+
+    .nav-btn {
+        padding: 10px 20px;
+    }
+}
