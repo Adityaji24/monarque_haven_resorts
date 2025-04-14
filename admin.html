@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: bisque;
+      color: brown;
+      padding: 40px;
+      margin: 0;
+    }
+
+    #hamburger {
+      position: fixed;
+      top: 15px;
+      left: 25px;
+      z-index: 10001;
+      font-size: 34px;
+      background: #fff3e6;
+      padding: 12px;
+      border-radius: 50%;
+      color: #5c4033;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    #hamburger:hover {
+      transform: scale(1.1);
+    }
+
+    #full {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: rgba(255, 248, 220, 0.8);
+      color: brown;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: right 0.6s ease-in-out;
+      font-family: 'Poppins', sans-serif;
+      backdrop-filter: blur(15px);
+      overflow: hidden;
+    }
+
+    #full.show {
+      right: 0;
+    }
+
+    #full h2 {
+      position: absolute;
+      top: 1.8rem;
+      right: 2rem;
+      font-size: 4rem;
+      cursor: pointer;
+      color: #5c4033;
+      transition: transform 0.3s ease;
+    }
+
+    #full h2:hover {
+      transform: scale(1.2);
+    }
+
+    #amg {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      align-items: center;
+      text-align: center;
+      animation: fadeSlideUp 1s ease-in-out forwards;
+    }
+
+    #amg h3 {
+      font-size: 2.5rem;
+      cursor: pointer;
+      font-weight: 300;
+      position: relative;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    #amg h3:hover {
+      color: #d2691e;
+      transform: scale(1.1);
+    }
+
+    #iconsss {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    #iconsss i {
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    #iconsss i:hover {
+      transform: scale(1.3);
+      color: #f4c613;
+      text-shadow: 0 0 5px #f4c613;
+    }
+
+    #amg button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      background-color: #f4c613;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      color: brown;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #amg button:hover {
+      background-color: white;
+      color: black;
+      box-shadow: 0 0 10px #f4c613;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      border-bottom: 2px solid brown;
+      padding-bottom: 10px;
+      display: inline-block;
+      margin-top: 50px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff8f0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    table th, table td {
+      border: 1px solid #d2b48c;
+      padding: 14px;
+      text-align: left;
+      font-size: 1.2rem;
+    }
+
+    th {
+      background-color: #deb887;
+      color: white;
+      font-weight: 600;
+    }
+
+    td img {
+      width: 220px;
+      height: 180px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fff2e0;
+    }
+
+    tr:hover {
+      background-color: #ffe4c4;
+      transition: background-color 0.3s;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="hamburger">
+    <i class="ri-menu-line"></i>
+  </div>
+
+  <div id="full">
+    <h2><i class="ri-close-fill"></i></h2>
+    <div id="amg">
+      <a href="#"><h3>Home</h3></a>
+      <a href="about.html"><h3>About</h3></a>
+      <a href="menu.html"><h3>Menu</h3></a>
+      <a href="vrtour.html"><h3>VR Tour</h3></a>
+      <a href="events.html"><h3>Events</h3></a>
+      
+      <div id="iconsss">
+        <i class="ri-instagram-line"></i>
+        <i class="ri-facebook-circle-line"></i>
+        <a href="https://youtu.be/72l_V4ObYaM?si=OnyuH-Pdi7Fo1TDq"><i class="ri-youtube-fill"></i></a>
+        <i class="ri-linkedin-box-line"></i>
+      </div>
+      <a href="booking.html"><button>Make A Reservation</button></a>
+      <a href="menu.html"><button>Order Online</button></a>
+    </div>
+  </div>
+
+  <h1>Admin Dashboard - Cart Data</h1>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Item Image</th>
+        <th>Item Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="https://handwrittenwines.com/wp-content/uploads/2022/02/Pinot-Noir-Black-Truffle-Risotto-Image_1000x650.jpg.webp" alt="Risotto" /></td>
+        <td>Black Truffle And Parmesan Risotto</td>
+        <td>$20</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><img src="https://cdn.loveandlemons.com/wp-content/uploads/opengraph/2019/07/burrata-recipe.jpg" alt="Burrata" /></td>
+        <td>Burrata And Tomato Consommé with Basil Oil And Caviar</td>
+        <td>$25</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td><img src="https://xoxobella.com/wp-content/uploads/2022/07/heirloom_italian_burrata_caprese_salad-007.jpg" alt="Tomato Burrata" /></td>
+        <td>24K Gold Burrata with Heirloom Tomato Carpaccio And Aged Balsamic</td>
+        <td>$20</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td><img src="https://pistachiopicks.com/wp-content/uploads/2020/01/2020_0118_112054005534812624814927385.jpg?w=683" alt="Drink" /></td>
+        <td>Belgian Cafe Cappuccino</td>
+        <td>$7</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const fullMenu = document.getElementById("full");
+    const closeIcon = document.querySelector("#full h2 i");
+
+    hamburger.addEventListener("click", () => {
+      fullMenu.classList.add("show");
+
+      gsap.fromTo("#amg h3", 
+        { opacity: 0, y: 30 }, 
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.5, ease: "power2.out" }
+      );
+
+      gsap.fromTo("#iconsss i", 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.4, delay: 0.3, ease: "power2.out" }
+      );
+
+      gsap.fromTo("#amg button", 
+        { opacity: 0, y: 20 }, 
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.4, delay: 0.6, ease: "power2.out" }
+      );
+    });
+
+    closeIcon.addEventListener("click", () => {
+      fullMenu.classList.remove("show");
+      gsap.set("#amg h3, #iconsss i, #amg button", { opacity: 0, y: 20 });
+    });
+  </script>
+</body>
+</html>
